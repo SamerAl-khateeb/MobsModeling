@@ -1,0 +1,962 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body,
+html {
+    overflow-x: hidden;
+    /* Hide horizontal overflow */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #141E61;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.65rem 3.5rem;
+    background: #141E61;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.1rem;
+    color: #EEEEEE;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 1.25rem;
+    color: #EEEEEE;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 1.9rem;
+}
+
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #EEEEEE;
+    transition: .5s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+.dropdown-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #EEEEEE;
+}
+
+.is-hidden {
+    display: none;
+}
+
+
+/** IMAGE CAROUSEL **/
+
+.carousel {
+    width: 100vw;
+    min-height: 100vh;
+    position: relative;
+    
+}
+
+.carousel>ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: 300ms opacity ease-in-out;
+    transition-delay: 300ms;
+}
+
+.slide>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.slide[data-active] {
+    opacity: 1;
+    z-index: 1;
+    transition-delay: 0ms;
+}
+
+.carousel-button {
+    position: absolute;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+    background-color: rgba(0, 0, 0, .1);
+    height: 60px;
+    line-height: 60px;
+    transition: background-color 0.3s, color 0.3s, outline 0.5s;
+}
+
+.carousel-button:hover,
+.carousel-button:focus {
+    color: #EEEEEE;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.carousel-button:focus {
+    outline: 1px solid black;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.carousel-button:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.carousel-button:focus-visible {
+    outline: 1px solid black;
+}
+
+.carousel-button.prev {
+    left: 1rem;
+}
+
+.carousel-button.next {
+    right: 1rem;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    right: 5%;
+    z-index: 2;
+    color: #EEEEEE;
+    text-shadow: 2px 2px 3px #000;
+}
+
+.carousel-caption h2 {
+    font-size: 2.2 rem;
+    margin-bottom: 0.5rem;
+}
+
+.carousel-caption p {
+    font-size: 1.1 rem;
+    margin-bottom: 1.25rem;
+}
+
+.carousel-read-more {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    color: #EEEEEE;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-read-more:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/** ABOUT PAGE **/
+
+#textandtwitter {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 70px 30px 70px;
+    gap: 2.5rem;
+}
+
+#leftsection {
+    flex: 0 1 70%;
+    background-color: #EEEEEE;
+    padding: 25px 2.5rem;
+    color: #333;
+    border-radius: 1rem;
+}
+
+
+.project-description {
+    font-size: 1rem;
+}
+
+
+.project-description p,
+.project-description ol {
+    margin-bottom: 15px;
+}
+
+
+#twitter {
+    flex: 0 1 30%;
+    background-color: #EEEEEE;
+    padding: 20px;
+    border-radius: 0.6rem;
+    height: 100vh;
+    min-width: 300px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden;
+}
+
+.project-description ol {
+    padding-left: 20px;
+}
+
+.project-description li {
+    margin-bottom: 7px;
+}
+
+
+/** TEAM PAGE **/
+
+#team {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    margin-bottom: 0px;
+    
+}
+
+.wrapper {
+    background: #EEEEEE;
+    width: 75%;
+    border-radius: 1rem;
+    padding: 3.125rem;
+    margin: 1.875rem;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.section-header {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.sectionbigtext {
+    color: #EEEEEE;
+    font-size: 4rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#team h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 10px;
+}
+
+#team hr {
+    width: 120px;
+    margin: 15px auto;
+}
+
+.members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-mem {
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    margin: 20px 0 10px 0;
+    text-align: center;
+}
+
+.members.professors .team-mem {
+    width: calc(30% - 20px);
+}
+
+.members.students .team-mem {
+    width: calc(23% - 20px);
+}
+
+#team img {
+    max-width: 100%;
+    width: 180px;
+    height: auto;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+#team h4 {
+    text-align: center;
+    font-size: max(1vw, 12px);
+    margin: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#team a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#team p {
+    text-align: center;
+    font-size: 11px;
+    margin: 8px;
+}
+
+
+/** PUBLICATIONS PAGE **/
+#publications {
+    padding: 15px 80px 10px 80px;
+    color: #333333;
+}
+
+#publications h3 {
+    margin-bottom: 30px;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    /* This will make the columns the same height */
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* This ensures that the columns take up equal width */
+    min-width: 300px;
+    /* For responsiveness */
+    background-color: #EEEEEE;
+    padding: 40px;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);
+    margin-top: 20px;
+    overflow: hidden;
+    /* Changed from auto to prevent unwanted scrollbars */
+}
+
+.pub-list {
+    flex-grow: 1;
+    padding-bottom: 20px;
+}
+
+.column ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.column li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 40px;
+}
+
+.column li::before {
+    position: absolute;
+    left: 0;
+    content: "";
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+}
+
+.invpres::before {
+    background-image: url('../images/Publication-Icons/Invited-Presentation-Icon.png');
+}
+
+.conpro::before {
+    background-image: url('../images/Publication-Icons/Conference-Proceedings-Icon.png');
+}
+
+.presnt::before {
+    background-image: url('../images/Publication-Icons/Presentation-Icon.png');
+}
+
+.joupap::before {
+    background-image: url('../images/Publication-Icons/Journal-Paper-Icon.png');
+}
+
+.extabs::before {
+    background-image: url('../images/Publication-Icons/Extended-Abstract-Icon.png');
+}
+
+.poster::before {
+    background-image: url('../images/Publication-Icons/Poster-Presentation-Icon.png');
+}
+
+.invpres span {
+    background-image: url('../images/Publication-Icons/Invited-Presentation-Icon.png');
+    background-size: contain;
+}
+
+.conpro span {
+    background-image: url('../images/Publication-Icons/Conference-Proceedings-Icon.png');
+    background-size: contain;
+}
+
+.presnt span {
+    background-image: url('../images/Publication-Icons/Presentation-Icon.png');
+    background-size: contain;
+}
+
+.joupap span {
+    background-image: url('../images/Publication-Icons/Journal-Paper-Icon.png');
+    background-size: contain;
+}
+
+.extabs span {
+    background-image: url('../images/Publication-Icons/Extended-Abstract-Icon.png');
+    background-size: contain;
+}
+
+.poster span {
+    background-image: url('../images/Publication-Icons/Poster-Presentation-Icon.png');
+    background-size: contain;
+}
+
+/** TOOLS **/
+#tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 100vh;
+    box-sizing: border-box;
+    height: auto;
+    padding-bottom: 250px;
+    padding-top: 30px;
+}
+
+input {
+
+    display: none;
+}
+
+.container {
+
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 600px;
+    display: flex;
+    transform-style: preserve-3d;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cards {
+
+    position: relative;
+    height: 480px;
+    width: 430px;
+    margin-bottom: 20px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    padding-top: 20px;
+}
+
+
+.cards label {
+    flex: 1 0 auto;
+    position: absolute;
+    width: 430px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    cursor: pointer;
+    transition: transform 0.55s ease;
+}
+
+.cards .card {
+
+    position: relative;
+    height: 100%;
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    padding: 30px 35px;
+    min-width: 250px;
+
+}
+
+
+.card .image {
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .image img {
+
+    border-radius: 5px;
+    box-shadow: 15px 15px 40px rgba(0, 0, 0, 50%);
+    margin-top: 23px;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    cursor: default;
+}
+
+
+.card .infos {
+
+    display: block;
+    text-align: end;
+    padding-top: 40px;
+}
+
+.infos span {
+
+    display: block;
+}
+
+.infos .name {
+
+    font-size: 1.5rem;
+    color: var(--current-color1);
+    letter-spacing: .3rem;
+    margin-bottom: 20px;
+    padding-left: 25%;
+    transition: all .6s ease;
+}
+
+.infos .tooldesc {
+
+    font-size: 0.85rem;
+    color: #787A91;
+    letter-spacing: 2px;
+}
+
+.card .btn-contact {
+
+    width: 100%;
+    height: 60px;
+    margin: 35px auto;
+    border-radius: 5px;
+    background-color: var(--current-color1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 10px;
+    font-weight: 700;
+    transition: all .7s ease;
+}
+
+#tall-card .infos .name {
+    font-size: 1.2rem;
+    padding-left: 10%;
+    margin-bottom: 10px;
+}
+
+#tall-card .infos .tooldesc {
+    font-size: 0.8rem;
+    letter-spacing: normal;
+    line-height: 1.3;
+}
+
+#tall-card .btn-contact {
+    margin-top: 20px;
+}
+
+/* When slide 1 is checked, slide 2 is on the right and slide 3 is on the left */
+#s1:checked~.cards #slide2 {
+    box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(70%, 0, -220px);
+    /* Positioned to the right */
+    --current-color1: #ECEAED;
+    --current-color2: #404457;
+}
+
+#s1:checked~.cards #slide3 {
+    box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(-70%, 0, -220px);
+    /* Positioned to the left */
+    --current-color1: #ECEAED;
+    --current-color2: #404457;
+}
+
+/* When slide 2 is checked, slide 3 is on the right and slide 1 is on the left */
+#s2:checked~.cards #slide3 {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(70%, 0, -120px);
+    /* Positioned to the right */
+    --current-color1: #ECEAED;
+    --current-color2: #404457;
+}
+
+#s2:checked~.cards #slide1 {
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(-70%, 0, -120px);
+    /* Positioned to the left */
+    --current-color1: #ECEAED;
+    --current-color2: #404457;
+}
+
+/* When slide 3 is checked, slide 1 is on the right and slide 2 is on the left */
+#s3:checked~.cards #slide1 {
+    box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(70%, 0, -220px);
+    /* Positioned to the right */
+    --current-color1: #ECEAED;
+    --current-color2: #404457;
+}
+
+#s3:checked~.cards #slide2 {
+    box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 45%);
+    transform: translate3d(-70%, 0, -220px);
+    /* Positioned to the left */
+    --current-color1: #ECEAED;
+    --current-color2: #404457;
+}
+
+/* Center slide styling for when each radio button is checked */
+#s1:checked~.cards #slide1,
+#s2:checked~.cards #slide2,
+#s3:checked~.cards #slide3 {
+    box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 50%);
+    transform: translate3d(0, 0, 0);
+    /* Centered */
+    --current-color1: #141E61;
+    --current-color2: #ECEAED;
+}
+
+
+/** FOOTER **/
+
+/* Common Styles */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #EEEEEE;
+    padding: 50px 130px 50px 130px;
+}
+
+.footer-text {
+    position: absolute;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* Left Side Logos */
+.left-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo {
+    height: 100px;
+    width: auto;
+    margin: 20px;
+}
+
+.top-logos {
+    display: flex;
+}
+
+
+.cosmos-logo {
+    height: 80px;
+    width: auto;
+    margin-top: 15px;
+}
+
+.right-footer-logo {
+    height: 125px;
+    width: auto;
+    margin: 20px;
+}
+
+/* Right Side Logos and Award Number */
+.right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-logos {
+    display: flex;
+}
+
+
+.award-number {
+    margin-top: 10px;
+    text-shadow: 0.5px 0.5px black;
+    font-size: 1.25rem;
+}
+
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+
+    html {
+        font-size: 14px;
+        /* smaller base font size for smaller screens */
+    }
+
+    .navbar {
+
+        position: absolute;
+        background: #141E61;
+        top: 100%;
+        right: 0;
+        /* Align it to the right edge */
+        width: auto;
+        /* Let it adjust based on content */
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar a {
+        display: block;
+        margin-left: 0;
+        padding: 10px 15px;
+        text-align: right;
+    }
+
+    .header .logo {
+        font-size: 0;
+        /* This hides the text but leaves the content box */
+    }
+
+    .header .logo::after {
+        /* Hides the text content only */
+        content: none;
+    }
+
+    .header .logo img {
+        margin-right: 0;
+    }
+
+    .dropdown-container {
+        position: relative;
+    }
+
+    .dropdown-toggle {
+        display: block;
+        font-size: 2rem;
+    }
+
+    .slide>img {
+
+        width: 155%;
+        /* Zoom out effect */
+        height: auto;
+        transform: translateX(-20%);
+        /* Keep the image centered */
+    }
+
+    .carousel-caption h2 {
+        font-size: 2rem;
+        /* Smaller font size on tablets */
+        line-height: 1.3;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+        /* Smaller font size for the paragraph */
+        line-height: 1.5;
+    }
+
+
+    .carousel-button {
+        font-size: 3rem;
+        /* Smaller buttons on tablets */
+    }
+
+    #textandtwitter {
+        padding: 20px 30px 10px 30px;
+        gap: 2.0rem;
+    }
+
+
+    .wrapper {
+        width: 90%;
+        /* Increase width to reduce space from viewport edges */
+        padding: 1.25rem 0.75rem;
+        /* Reduce padding for less horizontal space */
+        margin: 0.9375rem;
+        
+    }
+
+    .team-mem {
+        padding: 0 0.5rem;
+        /* Reduce horizontal padding inside each team member card */
+        margin: 10px 0;
+        /* Adjust vertical margin, remove horizontal margin */
+        width: 100%;
+        /* Set width to 100% within the container */
+    }
+
+    .members.professors .team-mem,
+    .members.students .team-mem {
+        width: 100%;
+        /* Set width to 100% within the container for all team members */
+    }
+
+    #team img {
+        width: 180px;
+        
+    }
+
+    #team h4 {
+        font-size: 1rem;
+      
+    }
+
+    #team p {
+        font-size: 0.8rem;
+       
+    }
+
+    #publications {
+        padding: 20px 20px;
+    }
+
+    .columns {
+        gap: 40px;
+    }
+
+    #textandtwitter {
+        flex-direction: column;
+    }
+
+    #leftsection,
+    #twitter {
+        flex-basis: 100%;
+    }
+
+    .team-mem {
+        flex-basis: 50%;
+    }
+
+    #team img {
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+    }
+
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-logos,
+    .right-content {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .top-logos,
+    .right-logos {
+        justify-content: center;
+        /* Center the logos */
+    }
+
+
+}
+
+@media screen and (min-width: 769px) {
+    .navbar {
+        display: block !important;
+        /* !important to override inline styles or class styles */
+    }
+}
+
+/* Adjustments for very small screens like phones (max-width: 480px) */
+@media (max-width: 480px) {
+
+    @media (max-width: 480px) {
+        .slide>img {
+            width: 180%;
+            /* More zoom out effect */
+            transform: translateX(-30%);
+            /* Adjust the image to stay centered */
+        }
+    }
+
+    .carousel-caption h2 {
+        font-size: 1.5rem;
+        /* Even smaller font size on mobile phones */
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+        /* Smaller font size for the paragraph on mobile phones */
+    }
+
+    .carousel-button {
+        font-size: 2rem;
+        /* Smaller buttons on mobile phones */
+    }
+
+    .team-mem {
+        flex-basis: 100%;
+        margin: 10px 0;
+    }
+}
