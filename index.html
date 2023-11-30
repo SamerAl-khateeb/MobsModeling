@@ -9,6 +9,7 @@
   <meta name="author" content="Luke Zacher">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="styles/style.css" rel="stylesheet">
+  <link href="styles/responsive.css" rel="stylesheet"><!-- new stylesheet for mobile -->
 
   <script src="scripts/script.js" defer></script>
   <title>Mob Modeling</title>
@@ -20,8 +21,8 @@
 
   <header class="header">
     <a href="#carousel-top" id="logo" class="logo">
-      <img src="images/Mob-Logo.png" alt="Logo">
-      <span>Building a Computational Model of Mobs Leveraging Social Science Theories</span>
+      <img src="images/Mob-Logo.png" alt="Logo" class="header-logo">
+      <span class="logo-text">Building a Computational Model of Mobs Leveraging Social Science Theories</span>
     </a>
 
     <div class="dropdown-container">
@@ -49,9 +50,10 @@
             <img src="images/Carousel-Images/Carousel-Image-1.png" alt="Carousel Image 1">
             <div class="carousel-caption">
               <h2>Creighton University Professors and Students Study Online Mobs</h2>
-              <p>Burright is working with Creighton Assistant Professor Dr. Samer Al-Khateeb on a research project
+              <p class="pc-tab">Burright is working with Creighton Assistant Professor Dr. Samer Al-Khateeb on a research project
                 awarded by the U.S. Air-force. They’re tasked with trying to figure out how online mobs form and how
                 likely they are to reach their goal.</p>
+                <p class="mob-only">Burright is working with Creighton Assistant Professor Dr. Samer Al-Khateeb on a research project. They’re tasked with trying to figure out how online mobs form.</p>
               <a href="https://www.wowt.com/2022/08/19/creighton-university-professors-students-study-online-mobs/"
                 target="_blank" class="carousel-read-more">Read More</a>
             </div>
@@ -59,7 +61,8 @@
           <li class="slide">
             <img src="images/Carousel-Images/Carousel-Image-2.jpg" alt="Carousel Image 2">
             <div class="carousel-caption">
-              <h2>Creighton Researcher Awarded $585K Air Force Grant To Study Internet Mobs</h2>
+              <h2 class="pc-tab">Creighton Researcher Awarded $585K Air Force Grant To Study Internet Mobs</h2>
+              <h2 class="mob-only">Creighton Researcher Awarded Grant To Study Internet Mobs</h2>
               <p>The research could lead to strategies for countering groups like the Islamic State that use mobs to
                 create harm.</p>
               <a href="https://omaha.com/news/local/creighton-researcher-awarded-585k-air-force-grant-to-study-internet-mobs/article_47d43ae2-18f1-11ed-803e-b37d66c23417.html"
@@ -69,10 +72,12 @@
           <li class="slide">
             <img src="images/Carousel-Images/Carousel-Image-3.jpeg" alt="Carousel Image 3">
             <div class="carousel-caption">
-              <h2>UALR Partnering In $660,000 Department of Defense Grant</h2>
-              <p>Dr. Nitin Agarwal of UA Little Rock and Dr. Samer Al-Khateeb of Creighton University have received a
+              <h2 class="pc-tab">UALR Partnering In $660,000 Department of Defense Grant</h2>
+              <h2 class="mob-only">UALR Partnering In DOD Grant</h2>
+              <p class="pc-tab">Dr. Nitin Agarwal of UA Little Rock and Dr. Samer Al-Khateeb of Creighton University have received a
                 $660,407 grant from the U.S. Department of Defense (DoD)/Air Force Office of Scientific Research (AFOSR)
                 to research violent mob behavior to strengthen domestic and national security apparatus.</p>
+              <p class="mob-only">Dr. Nitin Agarwal Dr. Samer Al-Khateeb have received a $660,407 grant from the U.S. Department of Defense/Air Force Office of Scientific Research to research violent mob behavior.</p>
               <a href="https://ualr.edu/news/2022/09/07/department-of-defense-grant/" target="_blank"
                 class="carousel-read-more">Read More</a>
             </div>
