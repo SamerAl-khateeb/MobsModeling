@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname !== '/index.html') {
       event.preventDefault();
       window.location.href = '/index.html';
-    } else {
+    } else {  
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
