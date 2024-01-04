@@ -368,7 +368,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    /* This will make the columns the same height */
     gap: 3rem;
     flex-wrap: wrap;
     margin-top: 40px;
@@ -378,16 +377,13 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    /* This ensures that the columns take up equal width */
     min-width: 300px;
-    /* For responsiveness */
     background-color: #EEEEEE;
     padding: 40px;
     border-radius: 1rem;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);
     margin-top: 20px;
     overflow: hidden;
-    /* Changed from auto to prevent unwanted scrollbars */
 }
 
 .pub-list {
@@ -406,69 +402,86 @@ body {
     padding-left: 40px;
 }
 
-.column li::before {
+/* Icon container for each publication type */
+.icon-container {
     position: absolute;
     left: 0;
+    top: 0;
+   
+    width: 30px;
+    height: 30px;
+}
+
+.icon-container::before {
     content: "";
-    display: inline-block;
+    display: block;
     height: 30px;
     width: 30px;
     background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
-.invpres::before {
+/* Tooltip styles */
+.tooltip {
+    visibility: hidden;
+    min-width: 80px;  /* Ensures the tooltip is not narrower than this */
+    max-width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 100%;
+    /**transform: translateX(-40%);**/
+    margin-left: -30px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+/**
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}**/
+
+
+
+.icon-container:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Icons for different publication types */
+.poster .icon-container::before {
+    background-image: url('../images/Publication-Icons/Poster-Presentation-Icon.png');
+}
+.invpres .icon-container::before {
     background-image: url('../images/Publication-Icons/Invited-Presentation-Icon.png');
 }
-
-.conpro::before {
+.conpro .icon-container::before {
     background-image: url('../images/Publication-Icons/Conference-Proceedings-Icon.png');
 }
-
-.presnt::before {
+.presnt .icon-container::before {
     background-image: url('../images/Publication-Icons/Presentation-Icon.png');
 }
-
-.joupap::before {
+.joupap .icon-container::before {
     background-image: url('../images/Publication-Icons/Journal-Paper-Icon.png');
 }
-
-.extabs::before {
+.extabs .icon-container::before {
     background-image: url('../images/Publication-Icons/Extended-Abstract-Icon.png');
 }
 
-.poster::before {
-    background-image: url('../images/Publication-Icons/Poster-Presentation-Icon.png');
-}
-
-.invpres span {
-    background-image: url('../images/Publication-Icons/Invited-Presentation-Icon.png');
-    background-size: contain;
-}
-
-.conpro span {
-    background-image: url('../images/Publication-Icons/Conference-Proceedings-Icon.png');
-    background-size: contain;
-}
-
-.presnt span {
-    background-image: url('../images/Publication-Icons/Presentation-Icon.png');
-    background-size: contain;
-}
-
-.joupap span {
-    background-image: url('../images/Publication-Icons/Journal-Paper-Icon.png');
-    background-size: contain;
-}
-
-.extabs span {
-    background-image: url('../images/Publication-Icons/Extended-Abstract-Icon.png');
-    background-size: contain;
-}
-
-.poster span {
-    background-image: url('../images/Publication-Icons/Poster-Presentation-Icon.png');
-    background-size: contain;
-}
 
 /** TOOLS **/
 #tools {

@@ -323,17 +323,7 @@
   .mob {
     display: none !important;
   }
-  div.pub-icons ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-  }
-  div.pub-icons ul li {
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
-  }
+ 
 } /* /min-width:1024px 
 ------------------------------------------------------------------------------ */
 
@@ -442,20 +432,7 @@
   #s3:checked ~ div.cards #slide1 {
     transform: translate3d(180px, 0, -150px) scale(0.8);
   }
-  div.pub-icons ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-  }
-  div.pub-icons ul li {
-    padding-left: 35px;
-    height: 30px;
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.85rem;
-  }
+  
   #publications .column {
     padding: 25px 20px;
   }

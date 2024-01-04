@@ -1,4 +1,5 @@
 let isTransitioning = false;
+let autoSlideInterval;
 
 function adjustNavbarDisplay() {
   const navbar = document.querySelector('.navbar');
@@ -53,15 +54,31 @@ function startAutoSlide() {
   autoSlideInterval = setInterval(() => { changeSlide(1); }, 9000);
 }
 
+// Tooltip toggle function for mobile devices
+function toggleTooltip(icon) {
+  let tooltip = icon.querySelector('.tooltip');
+  let isTooltipVisible = tooltip.style.visibility === 'visible';
+  // Hide all tooltips
+  document.querySelectorAll('.tooltip').forEach(tip => {
+    tip.style.visibility = 'hidden';
+    tip.style.opacity = '0';
+  });
+  // Show the pressed tooltip if it was not visible
+  if (!isTooltipVisible) {
+    tooltip.style.visibility = 'visible';
+    tooltip.style.opacity = '1';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   adjustNavbarDisplay();
   adjustCarouselPadding();
   adjustTwitterHeight(); 
 
   document.getElementById('logo').addEventListener('click', (event) => {
-    if (window.location.pathname !== '/index.html') {
+    if (window.location.pathname !== 'index.html') {
       event.preventDefault();
-      window.location.href = '/index.html';
+      window.location.href = 'index.html';
     } else {  
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -147,6 +164,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const carouselElement = document.querySelector('.carousel');
   carouselElement.addEventListener('touchstart', handleSwipe.onTouchStart, false);
   carouselElement.addEventListener('touchend', handleSwipe.onTouchEnd, false);
+
+  // Tooltip event listeners for mobile/touchscreen devices
+  document.querySelectorAll('.icon-container').forEach(icon => {
+    icon.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent event from bubbling
+      toggleTooltip(icon);
+    });
+  });
+
+  // Hide tooltips when tapping anywhere else on the page
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.tooltip').forEach(tip => {
+      tip.style.visibility = 'hidden';
+      tip.style.opacity = '0';
+    });
+  });
 });
 
 window.addEventListener('load', () => {
@@ -161,4 +194,4 @@ window.addEventListener('resize', () => {
   adjustTwitterHeight();
 });
 
-let autoSlideInterval = setInterval(() => { changeSlide(1); }, 9000);
+
