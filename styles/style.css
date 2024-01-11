@@ -426,7 +426,7 @@ body {
 /* Tooltip styles */
 .tooltip {
     visibility: hidden;
-    min-width: 80px;  /* Ensures the tooltip is not narrower than this */
+    min-width: 80px; 
     max-width: 300px;
     background-color: black;
     color: #fff;

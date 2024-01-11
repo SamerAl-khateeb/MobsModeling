@@ -4,7 +4,7 @@
 ------------------------------------------------------------------------------ */
 
 /* Adjustments for smaller screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 912px) {
   html {
     font-size: 14px;
     /* smaller base font size for smaller screens */
@@ -287,7 +287,7 @@
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 913px) {
   .navbar {
     display: block !important;
     /* !important to override inline styles or class styles */
