@@ -1,386 +1,719 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Mob simulation research project website"
+    />
+    <meta
+      name="keywords"
+      content="Mob simulation, Research, Creighton University"
+    />
+    <meta name="author" content="Luke Zacher" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles/style.css" rel="stylesheet" />
+    <link href="styles/responsive.css" rel="stylesheet" />
+    <!-- new stylesheet for mobile -->
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Mob simulation research project website">
-  <meta name="keywords" content="Mob simulation, Research, Creighton University">
-  <meta name="author" content="Luke Zacher">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="styles/style.css" rel="stylesheet">
-  <link href="styles/responsive.css" rel="stylesheet"><!-- new stylesheet for mobile -->
+    <script src="scripts/script.js" defer></script>
+    <title>Mob Modeling</title>
+  </head>
 
-  <script src="scripts/script.js" defer></script>
-  <title>Mob Modeling</title>
+  <body>
+    <!-- NAVBAR HEADER -->
+    <header class="header">
+      <a id="logo" class="logo">
+        <img src="images/Mob-Logo.png" alt="Logo" class="header-logo" />
+        <span class="logo-text"
+          >Building a Computational Model of Mobs Leveraging Social Science
+          Theories</span
+        >
+      </a>
 
-</head>
-
-<body>
-  <!-- NAVBAR HEADER -->
-
-  <header class="header">
-    <a href="#carousel-top" id="logo" class="logo">
-      <img src="images/Mob-Logo.png" alt="Logo" class="header-logo">
-      <span class="logo-text">Building a Computational Model of Mobs Leveraging Social Science Theories</span>
-    </a>
-
-    <div class="dropdown-container">
-      <button class="dropdown-toggle">☰</button>
-      <nav class="navbar is-hidden">
-
-        <a href="#textandtwitter">About</a>
-        <a href="#team">Team</a>
-        <a href="#publications">Publications</a>
-        <a href="#tools">Tools</a>
-
-      </nav>
-    </div>
-
-  </header>
-
-  <main>
-    <!-- IMAGE CAROUSEL -->
-    <section aria-label="Image Carousel" id="carousel-top">
-      <div class="carousel" data-carousel>
-        <button class="carousel-button prev" data-carousel-button="prev">&#8672;</button>
-        <button class="carousel-button next" data-carousel-button="next">&#8674;</button>
-        <ul data-slides>
-          <li class="slide" data-active>
-            <img src="images/Carousel-Images/Carousel-Image-1.png" alt="Carousel Image 1">
-            <div class="carousel-caption">
-              <h2>Creighton University Professors and Students Study Online Mobs</h2>
-              <p class="pc-tab">Burright is working with Creighton Assistant Professor Dr. Samer Al-khateeb on a research project
-                awarded by the U.S. Air-force. They’re tasked with trying to figure out how online mobs form and how
-                likely they are to reach their goal.</p>
-                <p class="mob-only">Burright is working with Creighton Assistant Professor Dr. Samer Al-khateeb on a research project. They’re tasked with trying to figure out how online mobs form.</p>
-              <a href="https://www.wowt.com/2022/08/19/creighton-university-professors-students-study-online-mobs/"
-                target="_blank" class="carousel-read-more">Read More</a>
-            </div>
-          </li>
-          <li class="slide">
-            <img src="images/Carousel-Images/Carousel-Image-2.jpg" alt="Carousel Image 2">
-            <div class="carousel-caption">
-              <h2 class="pc-tab">Creighton Researcher Awarded $585K Air Force Grant To Study Internet Mobs</h2>
-              <h2 class="mob-only">Creighton Researcher Awarded Grant To Study Internet Mobs</h2>
-              <p>The research could lead to strategies for countering groups like the Islamic State that use mobs to
-                create harm.</p>
-              <a href="https://omaha.com/news/local/creighton-researcher-awarded-585k-air-force-grant-to-study-internet-mobs/article_47d43ae2-18f1-11ed-803e-b37d66c23417.html"
-                target="_blank" class="carousel-read-more">Read More</a>
-            </div>
-          </li>
-          <li class="slide">
-            <img src="images/Carousel-Images/Carousel-Image-3.jpeg" alt="Carousel Image 3">
-            <div class="carousel-caption">
-              <h2 class="pc-tab">UALR Partnering In $660,000 Department of Defense Grant</h2>
-              <h2 class="mob-only">UALR Partnering In DOD Grant</h2>
-              <p class="pc-tab">Dr. Nitin Agarwal of UA Little Rock and Dr. Samer Al-khateeb of Creighton University have received a
-                $660,407 grant from the U.S. Department of Defense (DoD)/Air Force Office of Scientific Research (AFOSR)
-                to research violent mob behavior to strengthen domestic and national security apparatus.</p>
-              <p class="mob-only">Dr. Nitin Agarwal Dr. Samer Al-khateeb have received a $660,407 grant from the U.S. Department of Defense/Air Force Office of Scientific Research to research violent mob behavior.</p>
-              <a href="https://ualr.edu/news/2022/09/07/department-of-defense-grant/" target="_blank"
-                class="carousel-read-more">Read More</a>
-            </div>
-          </li>
-        </ul>
+      <div class="dropdown-container">
+        <button class="dropdown-toggle">☰</button>
+        <nav class="navbar is-hidden">
+          <a href="#textandtwitter">About</a>
+          <a href="#team">Team</a>
+          <a href="#publications">Publications</a>
+          <a href="#tools">Tools</a>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <!-- ABOUT SECTION -->
-
-    <section id="textandtwitter">
-
-      <div id="leftsection">
-
-        <div class="project-description">
-
-          <p>A mob is an event that is organized via social media or other forms of digital communication technologies
-            in which a group of people (who might have an agenda) get together online or offline (or both) to
-            collectively conduct an act and then disperse. Recently, mob-like events have become widespread, globally,
-            due to the affordability of social media, ease of use, effectiveness of individuals or groups in conducting
-            coordinated acts, the anonymity of the internet, and various other factors.</p>
-          <p>However, this topic is heavily understudied. Studying mobs is challenging due to the lack of data,
-            theoretical underpinning, and computational resources. This project aims to develop a model that can
-            simulate mobs guided by constructs extracted from various social science theories. Then use the model to
-            study the behavior of the mobbers, the motivations of their organizers, and to be able to predict mobs’
-            success or failure. Real-world data, albeit limited, will be used to evaluate the simulation-driven model in
-            a real-world setting.</p>
-          <p>The project seeks answers to the following research questions:</p>
-          <ol>
-            <li>Which social science theories can provide rigorous grounding to model mobs?</li>
-            <li>Which factors found in the social science literature can help us better understand the mob phenomenon?
+    <main>
+      <!-- IMAGE CAROUSEL -->
+      <section aria-label="Image Carousel" id="carousel-top">
+        <div class="carousel" data-carousel>
+          <button class="carousel-button prev" data-carousel-button="prev">
+            &#8672;
+          </button>
+          <button class="carousel-button next" data-carousel-button="next">
+            &#8674;
+          </button>
+          <ul data-slides>
+            <li class="slide" data-active>
+              <img
+                src="images/Carousel-Images/Carousel-Image-1.png"
+                alt="Carousel Image 1"
+              />
+              <div class="carousel-caption">
+                <h2>
+                  Creighton University Professors and Students Study Online Mobs
+                </h2>
+                <p class="pc-tab">
+                  Burright is working with Creighton Assistant Professor Dr.
+                  Samer Al-khateeb on a research project awarded by the U.S.
+                  Air-force. They’re tasked with trying to figure out how online
+                  mobs form and how likely they are to reach their goal.
+                </p>
+                <p class="mob-only">
+                  Burright is working with Creighton Assistant Professor Dr.
+                  Samer Al-khateeb on a research project. They’re tasked with
+                  trying to figure out how online mobs form.
+                </p>
+                <a
+                  href="https://www.wowt.com/2022/08/19/creighton-university-professors-students-study-online-mobs/"
+                  target="_blank"
+                  class="carousel-read-more"
+                  >Read More</a
+                >
+              </div>
             </li>
-            <li>Given a set of factors, how can we develop a model with predictive capabilities? furthermore, which
-              factor(s) are most helpful in predicting the success or failure of a mob? and what roles do synthetic or
-              inorganic (e.g., bot-driven) communications/behaviors play in mob dynamics?</li>
-          </ol>
-          <p>Findings from this research will be used to build tools that could assist the U.S. DoD in gaining
-            situational awareness and preparing for strategic intervention with mobs that could take a violent turn
-            during military exercises; humanitarian crises and disaster relief operations; or around military bases.
-          </p>
-          <p>
-            This project will result in three major deliverables: (1) a model that can simulate mobs to answer questions
-            about mob's outcome and mobbers' behavior, (2) peer-reviewed articles, and (3) an online tool that
-            implements the model.
-          </p>
+            <li class="slide">
+              <img
+                src="images/Carousel-Images/Carousel-Image-2.jpg"
+                alt="Carousel Image 2"
+              />
+              <div class="carousel-caption">
+                <h2 class="pc-tab">
+                  Creighton Researcher Awarded $585K Air Force Grant To Study
+                  Internet Mobs
+                </h2>
+                <h2 class="mob-only">
+                  Creighton Researcher Awarded Grant To Study Internet Mobs
+                </h2>
+                <p>
+                  The research could lead to strategies for countering groups
+                  like the Islamic State that use mobs to create harm.
+                </p>
+                <a
+                  href="https://omaha.com/news/local/creighton-researcher-awarded-585k-air-force-grant-to-study-internet-mobs/article_47d43ae2-18f1-11ed-803e-b37d66c23417.html"
+                  target="_blank"
+                  class="carousel-read-more"
+                  >Read More</a
+                >
+              </div>
+            </li>
+            <li class="slide">
+              <img
+                src="images/Carousel-Images/Carousel-Image-3.jpeg"
+                alt="Carousel Image 3"
+              />
+              <div class="carousel-caption">
+                <h2 class="pc-tab">
+                  UALR Partnering In $660,000 Department of Defense Grant
+                </h2>
+                <h2 class="mob-only">UALR Partnering In DOD Grant</h2>
+                <p class="pc-tab">
+                  Dr. Nitin Agarwal of UA Little Rock and Dr. Samer Al-khateeb
+                  of Creighton University have received a $660,407 grant from
+                  the U.S. Department of Defense (DoD)/Air Force Office of
+                  Scientific Research (AFOSR) to research violent mob behavior
+                  to strengthen domestic and national security apparatus.
+                </p>
+                <p class="mob-only">
+                  Dr. Nitin Agarwal Dr. Samer Al-khateeb have received a
+                  $660,407 grant from the U.S. Department of Defense/Air Force
+                  Office of Scientific Research to research violent mob
+                  behavior.
+                </p>
+                <a
+                  href="https://ualr.edu/news/2022/09/07/department-of-defense-grant/"
+                  target="_blank"
+                  class="carousel-read-more"
+                  >Read More</a
+                >
+              </div>
+            </li>
+          </ul>
         </div>
-      </div>
+      </section>
 
-      <div id="twitter">
-        <div class='sk-ww-twitter-hashtag-feed' data-embed-id='223500'></div>
-        <script src='https://widgets.sociablekit.com/twitter-hashtag-feed/widget.js' async defer></script>
-      </div>
-    </section>
+      <!-- ABOUT SECTION -->
 
-    <!--TEAM PAGE-->
-    <section id="team">
-      <div class="section-header">
-        <h1 class="sectionbigtext">Team</h1>
-      </div>
-      <div class="wrapper">
-        <h2>Professors</h2>
-        <hr>
-        <div class="members professors">
-          <div class="team-mem">
-            <a href="https://sameral-khateeb.github.io/" target="_blank">
-              <img src="images/team/Samer-Portrait.jpeg" alt="Samer Al-khateeb">
-              <h4>Samer Al-khateeb, Ph.D.</h4>
-            </a>
-            <p>Assistant Professor of Computer Science</p>
-            <p>Department of Computer Science, Design and Journalism, Creighton University</p>
-          </div>
-          <div class="team-mem">
-            <a href="https://cosmos.ualr.edu/about/nitinagarwal/" target="_blank">
-              <img src="images/team/Nitin-Portrait.jpg" alt="Nitin Agarwal">
-              <h4>Nitin Agarwal, Ph.D.</h4>
-            </a>
-            <p>Jerry L. Maulden-Entergy Endowed Chair & Distinguished Professor</p>
-            <p>Director, Collaboratorium for Social Media and Online Behavioral Studies (COSMOS), UA-Little Rock</p>
-          </div>
-          <div class="team-mem">
-            <a href="https://www.creighton.edu/campus-directory/murray-rebecca-k" target="_blank">
-              <img src="images/team/Rebecca-Portrait.jpg" alt="Rebecca Murray">
-              <h4>Rebecca Murray, Ph.D.</h4>
-            </a>
-            <p>Professor of Criminal Justice</p>
-            <p>Associate Dean, College of Arts and Sciences, Creighton University</p>
+      <section id="textandtwitter">
+        <div id="leftsection">
+          <div class="project-description">
+            <p>
+              A mob is an event that is organized via social media or other
+              forms of digital communication technologies in which a group of
+              people (who might have an agenda) get together online or offline
+              (or both) to collectively conduct an act and then disperse.
+              Recently, mob-like events have become widespread, globally, due to
+              the affordability of social media, ease of use, effectiveness of
+              individuals or groups in conducting coordinated acts, the
+              anonymity of the internet, and various other factors.
+            </p>
+            <p>
+              However, this topic is heavily understudied. Studying mobs is
+              challenging due to the lack of data, theoretical underpinning, and
+              computational resources. This project aims to develop a model that
+              can simulate mobs guided by constructs extracted from various
+              social science theories. Then use the model to study the behavior
+              of the mobbers, the motivations of their organizers, and to be
+              able to predict mobs’ success or failure. Real-world data, albeit
+              limited, will be used to evaluate the simulation-driven model in a
+              real-world setting.
+            </p>
+            <p>
+              The project seeks answers to the following research questions:
+            </p>
+            <ol>
+              <li>
+                Which social science theories can provide rigorous grounding to
+                model mobs?
+              </li>
+              <li>
+                Which factors found in the social science literature can help us
+                better understand the mob phenomenon?
+              </li>
+              <li>
+                Given a set of factors, how can we develop a model with
+                predictive capabilities? furthermore, which factor(s) are most
+                helpful in predicting the success or failure of a mob? and what
+                roles do synthetic or inorganic (e.g., bot-driven)
+                communications/behaviors play in mob dynamics?
+              </li>
+            </ol>
+            <p>
+              Findings from this research will be used to build tools that could
+              assist the U.S. DoD in gaining situational awareness and preparing
+              for strategic intervention with mobs that could take a violent
+              turn during military exercises; humanitarian crises and disaster
+              relief operations; or around military bases.
+            </p>
+            <p>
+              This project will result in three major deliverables: (1) a model
+              that can simulate mobs to answer questions about mob's outcome and
+              mobbers' behavior, (2) peer-reviewed articles, and (3) an online
+              tool that implements the model.
+            </p>
           </div>
         </div>
-      </div>
-      <div class="wrapper">
-        <h2>Students</h2>
-        <hr>
-        <div class="members students">
-          <div class="team-mem">
-            <a href="https://www.linkedin.com/in/jack-burright" target="_blank">
-              <img src="images/team/Jack-Portrait.jpg" alt="Jack Burright">
-              <h4>Jack Burright</h4>
-            </a>
-            <p>Computer Science, Senior</p>
-            <p>Department of Computer Science, Design and Journalism, Creighton University</p>
-          </div>
-          <div class="team-mem">
-            <a href="https://www.linkedin.com/in/bridget-orr-49a04420a" target="_blank">
-              <img src="images/team/Bridget-Portrait.jpg" alt="Bridget Orr">
-              <h4>Bridget Orr</h4>
-            </a>
-            <p>Medical Anthropology, Sociology, and Criminal Justice, Senior</p>
-            <p>Department of Cultural and Social Studies, Creighton University</p>
-          </div>
-          <div class="team-mem">
-            <a href="https://www.linkedin.com/in/luke-zacher-3b2446235/" target="_blank">
-               <img src="images/team/Luke-Portrait.jpg" alt="Luke Zacher">
-               <h4>Luke Zacher</h4>
-            </a>
-            <p>Computer Science, Junior</p>
-            <p>Department of Computer Science, Design and Journalism, Creighton University</p>
-          </div>
-          <div class="team-mem">
-            <a href="https://www.linkedin.com/in/ishmam-solaiman-212b32186/es-es?trk=people-guest_people_search-card"
-              target="_blank">
-              <img src="images/team/Ishmam-Portrait.jpg" alt="Ishmam Solaiman">
-              <h4>Ishmam Solaiman</h4>
-            </a>
-            <p>Computer Science, M.S.</p>
-            <p>Collaboratorium for Social Media and Online Behavioral Studies (COSMOS), UA-Little Rock</p>
 
+        <div id="twitter">
+          <div
+            class="sk-ww-twitter-hashtag-feed"
+            data-embed-id="25446216"
+          ></div>
+          <script
+            src="https://widgets.sociablekit.com/twitter-hashtag-feed/widget.js"
+            async
+            defer
+          ></script>
+        </div>
+      </section>
+
+      <!--TEAM PAGE-->
+      <section id="team">
+        <div class="section-header">
+          <h1 class="sectionbigtext">Team</h1>
+        </div>
+        <div class="wrapper">
+          <h2>Professors</h2>
+          <hr>
+          <div class="members professors">
+            <div class="team-mem">
+              <a href="https://sameral-khateeb.github.io/" target="_blank">
+                <img
+                  src="images/Team/Samer-Portrait.jpeg"
+                  alt="Samer Al-khateeb"
+                />
+                <h4>Samer Al-khateeb, Ph.D.</h4>
+              </a>
+              <p>Associate Professor of Computer Science</p>
+              <p>
+                Department of Computer Science, Design and Journalism, Creighton University.
+              </p>
+            </div>
+            <div class="team-mem">
+              <a
+                href="https://cosmos.ualr.edu/about/nitinagarwal/"
+                target="_blank"
+              >
+                <img src="images/Team/Nitin-Portrait.jpg" alt="Nitin Agarwal" />
+                <h4>Nitin Agarwal, Ph.D.</h4>
+              </a>
+              <p>
+                Jerry L. Maulden-Entergy Endowed Chair & Distinguished Professor
+              </p>
+              <p>
+                Director, Collaboratorium for Social Media and Online Behavioral Studies (COSMOS), UA-Little Rock.
+              </p>
+            </div>
+            <div class="team-mem">
+              <a
+                href="https://www.creighton.edu/campus-directory/murray-rebecca-k"
+                target="_blank"
+              >
+                <img
+                  src="images/Team/Rebecca-Portrait.jpg"
+                  alt="Rebecca Murray"
+                />
+                <h4>Rebecca Murray, Ph.D.</h4>
+              </a>
+              <p>Professor of Criminal Justice</p>
+              <p>
+                Associate Dean, College of Arts and Sciences, Creighton
+                University.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="wrapper">
+          <h2>Students</h2>
+          <hr>
+          <div class="members students">
+            <div class="team-mem">
+              <a
+                href="https://www.linkedin.com/in/luke-zacher-3b2446235/"
+                target="_blank"
+              >
+                <img src="images/Team/Luke-Portrait.jpg" alt="Luke Zacher" />
+                <h4>Luke Zacher</h4>
+              </a>
+              <p>Computer Science &amp; Graphic Design</p>
+              <p>Senior</p>
+              <p>
+                Department of Computer Science, Design and Journalism, Creighton University.
+              </p>
+            </div>
 
-    <!-- PUBLICATIONS -->
+            <!--Changes-->
+            <div class="team-mem">
+              <a
+                href="https://www.linkedin.com/in/owen-mcgrath-ocm/"
+                target="_blank"
+              >
+                <img src="images/Team/Owen-Portrait.jpg" alt="Owen McGrath" />
+                <h4>Owen McGrath</h4>
+              </a>
+              <p>Computer Science &amp; Business Intelligence and Analytics</p>
+              <p>Junior</p>
+              <p>
+                Department of Computer Science, Design and Journalism, Creighton University.
+              </p>
+            </div>
+            <div class="team-mem">
+              <a
+                href="https://www.linkedin.com/in/jamesbrainard/"
+                target="_blank"
+              >
+                <img
+                  src="images/Team/James-Portrait.jpg"
+                  alt="James Brainard"
+                />
+                <h4>James Brainard</h4>
+              </a>
+              <p>Data Science &amp; Psychology</p>
+              <p>Senior</p>
+              <p>Department of Computer Science, Design and Journalism &amp; Department of Psychological Science, Creighton University.</p>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+          <h2>Alumni</h2>
+          <hr />
+          <div class="members students">
+            <div class="team-mem">
+              <a
+                href="https://www.linkedin.com/in/jack-burright"
+                target="_blank"
+              >
+                <img src="images/Team/Jack-Portrait.jpg" alt="Jack Burright" />
+                <h4>Jack Burright</h4>
+              </a>
+              <p>Computer Science</p>
+              <p>
+                Department of Computer Science, Design and Journalism, Creighton University.
+              </p>
+            </div>
+            <div class="team-mem">
+              <a
+                href="https://www.linkedin.com/in/bridget-orr-49a04420a"
+                target="_blank"
+              >
+                <img src="images/Team/Bridget-Portrait.jpg" alt="Bridget Orr" />
+                <h4>Bridget Orr</h4>
+              </a>
+              <p>Medical Anthropology, Sociology, and Criminal Justice</p>
+              <p>
+                Department of Cultural and Social Studies, Creighton University.
+              </p>
+            </div>
+            <div class="team-mem">
+              <a
+                href="https://www.linkedin.com/in/ishmam-solaiman-212b32186/es-es?trk=people-guest_people_search-card"
+                target="_blank"
+              >
+                <img
+                  src="images/Team/Ishmam-Portrait.jpg"
+                  alt="Ishmam Solaiman"
+                />
+                <h4>Ishmam Solaiman</h4>
+              </a>
+              <p>Computer Science, M.S.</p>
+              <p>
+                Collaboratorium for Social Media and Online Behavioral Studies
+                (COSMOS), UA-Little Rock.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <section id="publications">
-      <div class="section-header">
-        <h1 class="sectionbigtext">Publications</h1>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <h3>Project Publications/Deliverables</h3>
-          <div class="pub-list">
-          <ul>
-            <li class="poster"><span class="icon-container"><span class="tooltip">Poster</span></span>Orr, B., Murray, R., Al-khateeb, S., & Burright, J. "Multi Theoretical Framework for Mob Modeling," the 2023 Annual Meeting of the American Society of Criminology. Seeking Justice: Reconciling with our Past, Reimagining the Future. November 15-18, 2023 Philadelphia, PA, USA. Click <a href="downloads/ASC_Poster.pdf" target="_blank">here</a> to download the poster.</li>
-            <li class="poster"><span class="icon-container"><span class="tooltip">Poster</span></span>Al-khateeb, S., Murray, R., & Agarwal, N. "<a href="https://community.apan.org/wg/afosr/2023-art-of-science-showcase/m/photos/447877" target="_blank">A Multi-Theoretical Network for Mobs Modeling</a>," the 2023 Basic Research Art of Science Showcase in honor of AFRL/AFOSR's 71 years of research innovation, organized by the U.S. Air Force Office Of Scientific Research. Click <a href="downloads/Basic_Research_Art_of_Science_Showcase_Virtual_Gallery_Poster.pdf" target="_blank">here</a> to download the poster.</li>
-            <li class="invpres"><span class="icon-container"><span class="tooltip">Invited Presentation</span></span>Al-khateeb, S. (2023, June) <a href="publication-pdfs/Mobs-Modeling.pdf"
-                target="_blank">Building a Computational Model of Mobs Leveraging Social Science Theories.</a> Presented
-              virtually to the South Big Data Hub Social Cybersecurity Working Group on June
-              1, 2023.</li>
-            <li class="conpro"><span class="icon-container"><span class="tooltip">Conference Proceedings</span></span>Al-khateeb, S., Burright, J., Murray, R., & Agarwal, N. (2023, May). <a
-                href="https://www.computer.org/csdl/proceedings-article/annsim/2023/10155386/1Oidv6KtKEw"
-                target="_blank">An Agent-Based Model
-                of Mobs Using Theoretical Constructs of Collective Action.</a> In 2023 Annual Modeling and Simulation
-              Conference (ANNSIM) (pp. 258-269). IEEE.</li>
-            <li class="conpro"><span class="icon-container"><span class="tooltip">Conference Proceedings</span></span>Al-khateeb, S., Agarwal, N. (2023, May). <a
-                href="https://link.springer.com/chapter/10.1007/978-3-031-33728-4_1" target="_blank">Studying Simulated
-                Mobs Using Monte Carlo Method
-                and the Theory of Collective Action.</a> In: Agarwal, N., Kleiner, G.B., Sakalauskas, L. (eds) Modeling
-              and
-              Simulation of Social-Behavioral Phenomena in Creative Societies. MSBC 2022. Communications in Computer and
-              Information Science, vol 1717. Springer, Cham. https://doi.org/10.1007/978-3-031-33728-4_1</li>
-            <li class="poster"><span class="icon-container"><span class="tooltip">Poster</span></span>Burright, J., Al-khateeb, S. (2023, April). <a href="publication-pdfs/NCUR2023-Poster.pdf"
-                target="_blank">Utilizing NetLogo to Simulate Mobs: An Agent-based Modeling Approach.</a> The 2023
-              National Conference on Undergraduate Research (NCUR 2023), April
-              13-15, 2023, University of Wisconsin, Eau Claire, Wisconsin, USA.</li>
+      <!-- PUBLICATIONS -->
+
+      <section id="publications">
+        <div class="section-header">
+          <h1 class="sectionbigtext">Publications</h1>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <h3>Project Publications/Deliverables</h3>
+            <div class="pub-list">
+              <ul>
+                <!--CHANGES-->
+                <li class="conpro">
+                  <span class="icon-container"><span class="tooltip">Conference Proceedings</span></span>Samer Al-khateeb, Jack Burright, Steven L. Fernandes, and Nitin Agarwal. "<a href="https://sbp-brims.org/2024/" target="_blank">Analyzing and Predicting Meetup Mobs Outcome Via Statistical Analysis and Deep Learning</a>" the 17th International Conference on Social Computing, Behavioral-Cultural Modeling & Prediction and Behavior Representation in Modeling and Simulation. September 18-20, 2024.
+                </li>
+                <li class="conpres">
+                  <span class="icon-container"><span class="tooltip">Conference Presentation</span></span>Samer Al-khateeb and Nitin Agarwal. "<a href="https://www.euro-online.org/conf/admin/tmp/program-euro33.pdf" target ="_blank"> Mobs Simulation Guided by Social Science-Based Multi-Theoretical Framework</a>". The 33rd European Conference on Operational Research June 30, 2024 – July 3, 2024. Technical University of Denmark (DTU), Copenhagen, Denmark.
+                </li>
+                <li class="jouart">
+                  <span class="icon-container"><span class="tooltip">Journal Article</span></span>Samer Al-khateeb, Jack Burright, and Nitin Agarwal. "<a href="https://doi.org/10.1007/s13278-024-01284-z" target="_blank">Evaluating collective action theory-based model to simulate mobs</a>". Social Network Analysis and Mining. Volume 14, 127 (2024).
+                </li>
+                <li class="poster">
+                  <span class="icon-container"><span class="tooltip">Poster</span></span>Orr, B., Murray, R., Al-khateeb, S., & Burright, J. "<a href="https://convention2.allacademic.com/one/asc/asc23/index.php?program_focus=view_paper&selected_paper_id=2084368&cmd=online_program_direct_link&sub_action=online_program" target="_blank">Multi Theoretical Framework for Mob Modeling</a>," the 2023 Annual Meeting of the American Society of Criminology. Seeking Justice: Reconciling with our Past, Reimagining the Future. November 15-18, 2023 Philadelphia, PA, USA. Click <a href="downloads/ASC_Poster.pdf" target="_blank">here</a> to
+                  download the poster.
+                </li>
+                <li class="poster">
+                  <span class="icon-container"
+                    ><span class="tooltip">Poster</span></span
+                  >Al-khateeb, S., Murray, R., & Agarwal, N. "<a
+                    href="https://community.apan.org/wg/afosr/2023-art-of-science-showcase/m/photos/447877"
+                    target="_blank"
+                    >A Multi-Theoretical Network for Mobs Modeling</a
+                  >," the 2023 Basic Research Art of Science Showcase in honor
+                  of AFRL/AFOSR's 71 years of research innovation, organized by
+                  the U.S. Air Force Office Of Scientific Research. Click
+                  <a
+                    href="downloads/Basic_Research_Art_of_Science_Showcase_Virtual_Gallery_Poster.pdf"
+                    target="_blank"
+                    >here</a
+                  >
+                  to download the poster.
+                </li>
+                <li class="invpres">
+                  <span class="icon-container"
+                    ><span class="tooltip">Invited Presentation</span></span
+                  >Al-khateeb, S. (2023, June)
+                  <a href="publication-pdfs/Mobs-Modeling.pdf" target="_blank"
+                    >Building a Computational Model of Mobs Leveraging Social
+                    Science Theories.</a
+                  >
+                  Presented virtually to the South Big Data Hub Social
+                  Cybersecurity Working Group on June 1, 2023.
+                </li>
+                <li class="conpro">
+                  <span class="icon-container"
+                    ><span class="tooltip">Conference Proceedings</span></span
+                  >Al-khateeb, S., Burright, J., Murray, R., & Agarwal, N.
+                  (2023, May).
+                  <a
+                    href="https://www.computer.org/csdl/proceedings-article/annsim/2023/10155386/1Oidv6KtKEw"
+                    target="_blank"
+                    >An Agent-Based Model of Mobs Using Theoretical Constructs
+                    of Collective Action.</a
+                  >
+                  In 2023 Annual Modeling and Simulation Conference (ANNSIM)
+                  (pp. 258-269). IEEE.
+                </li>
+                <li class="conpro">
+                  <span class="icon-container"
+                    ><span class="tooltip">Conference Proceedings</span></span
+                  >Al-khateeb, S., Agarwal, N. (2023, May).
+                  <a
+                    href="https://link.springer.com/chapter/10.1007/978-3-031-33728-4_1"
+                    target="_blank"
+                    >Studying Simulated Mobs Using Monte Carlo Method and the
+                    Theory of Collective Action.</a
+                  >
+                  In: Agarwal, N., Kleiner, G.B., Sakalauskas, L. (eds) Modeling
+                  and Simulation of Social-Behavioral Phenomena in Creative
+                  Societies. MSBC 2022. Communications in Computer and
+                  Information Science, vol 1717. Springer, Cham.
+                  https://doi.org/10.1007/978-3-031-33728-4_1
+                </li>
+                <li class="poster">
+                  <span class="icon-container"
+                    ><span class="tooltip">Poster</span></span
+                  >Burright, J., Al-khateeb, S. (2023, April).
+                  <a href="publication-pdfs/NCUR2023-Poster.pdf" target="_blank"
+                    >Utilizing NetLogo to Simulate Mobs: An Agent-based Modeling
+                    Approach.</a
+                  >
+                  The 2023 National Conference on Undergraduate Research (NCUR
+                  2023), April 13-15, 2023, University of Wisconsin, Eau Claire,
+                  Wisconsin, USA.
+                </li>
               </ul>
+            </div>
           </div>
-         
+          <div class="column">
+            <h3>Related Publications</h3>
+            <div class="pub-list">
+              <ul>
+                <li class="presnt">
+                  <span class="icon-container"
+                    ><span class="tooltip">Presentation</span></span
+                  >Al-khateeb, S. (2021, April). "Designing and Implementing a
+                  Data Repository for Cyber Flash Mobs". St. Albert Day
+                  (Creighton University Research Day) on April 20-22, 2021.
+                  Click
+                  <a
+                    href="downloads/Designing_Implementing_Data_Repository_for_Cyber_Flash_Mobs.pdf"
+                    target="_blank"
+                    >here</a
+                  >
+                  to download the poster.
+                </li>
+                <li class="joupap">
+                  <span class="icon-container"
+                    ><span class="tooltip">Journal Paper</span></span
+                  >Al-khateeb, S., Agarwal, N.
+                  <a
+                    href="https://link.springer.com/article/10.1007/s13278-021-00810-7"
+                    target="_blank"
+                    >Flash mob: a multidisciplinary review.</a
+                  >
+                  Soc. Netw. Anal. Min. 11, 97 (2021).
+                  https://doi.org/10.1007/s13278-021-00810-7.
+                </li>
+                <li class="conpro">
+                  <span class="icon-container"
+                    ><span class="tooltip">Conference Proceedings</span></span
+                  >Al-khateeb, S., Anderson, M., Agarwal, N. (2021).
+                  <a
+                    href="https://link.springer.com/chapter/10.1007/978-3-030-80387-2_16#:~:text=The%20human%20communication%20network%20has,disseminators%20of%20information%20about%20CFMs"
+                    target="_blank"
+                    >Studying the Role of Social Bots During Cyber Flash
+                    Mobs.</a
+                  >
+                  In: Thomson, R., Hussain, M.N., Dancy, C., Pyke, A. (eds)
+                  Social, Cultural, and Behavioral Modeling. SBP-BRiMS 2021.
+                  Lecture Notes in Computer Science(), vol 12720. Springer,
+                  Cham. https://doi.org/10.1007/978-3-030-80387-2_16
+                </li>
+                <li class="conpro">
+                  <span class="icon-container"
+                    ><span class="tooltip">Conference Proceedings</span></span
+                  >Al-khateeb, S., & Agarwal, N. (2015, March).
+                  <a
+                    href="https://aaai.org/papers/10239-analyzing-flash-mobs-in-cybernetic-space-and-the-imminent-security-threats-a-collective-action-based-theoretical-perspective-on-emerging-sociotechnical-behaviors/"
+                    target="_blank"
+                    >Analyzing flash mobs in cybernetic space and the imminent
+                    security threats a collective action based theoretical
+                    perspective on emerging sociotechnical behaviors.</a
+                  >
+                  In 2015 AAAI Spring Symposium Series.
+                </li>
+                <li class="conpro">
+                  <span class="icon-container"
+                    ><span class="tooltip">Conference Proceedings</span></span
+                  >Al-khateeb, S., & Agarwal, N. (2015).
+                  <a
+                    href="https://link.springer.com/chapter/10.1007/978-3-319-16268-3_26"
+                    target="_blank"
+                    >Analyzing deviant cyber flash mobs of isil on twitter.</a
+                  >
+                  In Social Computing, Behavioral-Cultural Modeling, and
+                  Prediction: 8th International Conference, SBP 2015,
+                  Washington, DC, USA, March 31-April 3, 2015. Proceedings 8
+                  (pp. 251-257). Springer International Publishing.
+                </li>
+                <li class="joupap">
+                  <span class="icon-container"
+                    ><span class="tooltip">Journal Paper</span></span
+                  >Al-khateeb, S., & Agarwal, N. (2014).
+                  <a
+                    href="https://commons.erau.edu/jdfsl/vol9/iss2/10/"
+                    target="_blank"
+                    >Developing a conceptual framework for modeling deviant
+                    cyber flash mob: a socio-computational approach leveraging
+                    hypergraph constructs.</a
+                  >
+                  Journal of Digital Forensics, Security and Law, 9(2), 10.
+                </li>
+                <li class="extabs">
+                  <span class="icon-container"
+                    ><span class="tooltip">Extended Abstract</span></span
+                  >Al-khateeb, S., & Agarwal, N. (2014, September).
+                  <a
+                    href="https://ieeexplore.ieee.org/document/6975611"
+                    target="_blank"
+                    >Modeling flash mobs in cybernetic space: Evaluating threats
+                    of emerging socio-technical behaviors to human security.</a
+                  >
+                  In 2014 IEEE Joint Intelligence and Security Informatics
+                  Conference (pp. 328-328). IEEE.
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="column">
-          <h3>Related Publications</h3>
-          <div class="pub-list">
-          <ul>
-            <li class="presnt"><span class="icon-container"><span class="tooltip">Presentation</span></span>Al-khateeb, S. (2021, April). "Designing and Implementing a Data Repository for Cyber Flash Mobs". St. Albert Day (Creighton University Research Day) on April 20-22, 2021. Click <a href="downloads/Designing_Implementing_Data_Repository_for_Cyber_Flash_Mobs.pdf" target="_blank">here</a> to download the poster.              
-            </li>
-            <li class="joupap"><span class="icon-container"><span class="tooltip">Journal Paper</span></span>Al-khateeb, S., Agarwal, N. <a
-                href="https://link.springer.com/article/10.1007/s13278-021-00810-7" target="_blank">Flash mob: a
-                multidisciplinary review.</a> Soc. Netw. Anal. Min.
-              11, 97 (2021). https://doi.org/10.1007/s13278-021-00810-7.</li>
-            <li class="conpro"><span class="icon-container"><span class="tooltip">Conference Proceedings</span></span>Al-khateeb, S., Anderson, M., Agarwal, N. (2021). <a
-                href="https://link.springer.com/chapter/10.1007/978-3-030-80387-2_16#:~:text=The%20human%20communication%20network%20has,disseminators%20of%20information%20about%20CFMs"
-                target="_blank">Studying the Role of Social Bots During Cyber Flash Mobs.</a> In: Thomson, R., Hussain,
-              M.N., Dancy, C., Pyke, A. (eds) Social, Cultural, and
-              Behavioral Modeling. SBP-BRiMS 2021. Lecture Notes in Computer Science(), vol 12720. Springer, Cham.
-              https://doi.org/10.1007/978-3-030-80387-2_16</li>
-            <li class="conpro"><span class="icon-container"><span class="tooltip">Conference Proceedings</span></span>Al-khateeb, S., & Agarwal, N. (2015, March). <a
-                href="https://aaai.org/papers/10239-analyzing-flash-mobs-in-cybernetic-space-and-the-imminent-security-threats-a-collective-action-based-theoretical-perspective-on-emerging-sociotechnical-behaviors/"
-                target="_blank">Analyzing flash mobs in cybernetic space and the imminent security threats a collective
-                action based theoretical perspective on emerging sociotechnical behaviors.</a> In 2015 AAAI Spring
-              Symposium
-              Series.
-            </li>
-            <li class="conpro"><span class="icon-container"><span class="tooltip">Conference Proceedings</span></span>Al-khateeb, S., & Agarwal, N. (2015). <a
-                href="https://link.springer.com/chapter/10.1007/978-3-319-16268-3_26" target="_blank">Analyzing deviant
-                cyber flash mobs of isil on
-                twitter.</a> In Social Computing, Behavioral-Cultural Modeling, and Prediction: 8th International
-              Conference,
-              SBP 2015, Washington, DC, USA, March 31-April 3, 2015. Proceedings 8 (pp. 251-257). Springer International
-              Publishing.</li>
-            <li class="joupap"><span class="icon-container"><span class="tooltip">Journal Paper</span></span>Al-khateeb, S., & Agarwal, N. (2014). <a
-                href="https://commons.erau.edu/jdfsl/vol9/iss2/10/" target="_blank">Developing a conceptual framework
-                for modeling
-                deviant cyber flash mob: a socio-computational approach leveraging hypergraph constructs.</a> Journal of
-              Digital Forensics, Security and Law, 9(2), 10.</li>
-            <li class="extabs"><span class="icon-container"><span class="tooltip">Extended Abstract</span></span>Al-khateeb, S., & Agarwal, N. (2014, September). <a
-                href="https://ieeexplore.ieee.org/document/6975611" target="_blank">Modeling flash mobs in cybernetic
-                space:
-                Evaluating threats of emerging socio-technical behaviors to human security.</a> In 2014 IEEE Joint
-              Intelligence and Security Informatics Conference (pp. 328-328). IEEE.</li>
-            </ul>
-            </div>
-            
+      </section>
+
+      <!-- TOOLS SECTION -->
+
+      <section id="tools">
+        <div class="section-header">
+          <h1 class="sectionbigtext">Tools</h1>
         </div>
-      </div>
 
-    </section>
+        <div class="container">
+          <input type="radio" name="slider" class="d-none" id="s1" checked />
+          <input type="radio" name="slider" class="d-none" id="s2" />
+          <input type="radio" name="slider" class="d-none" id="s3" />
 
-
-    <!-- TOOLS SECTION -->
-
-    <section id="tools">
-      <div class="section-header">
-        <h1 class="sectionbigtext">Tools</h1>
-      </div>
-
-      <div class="container">
-
-
-        <input type="radio" name="slider" class="d-none" id="s1" checked>
-        <input type="radio" name="slider" class="d-none" id="s2">
-        <input type="radio" name="slider" class="d-none" id="s3">
-    
-        <div class="cards">
-          <label for="s1" id="slide1">
-            <div class="card">
-              <div class="image">
-                <img src="images/Tools-Images/tool-1-img.png" alt="">
+          <div class="cards">
+            <label for="s1" id="slide1">
+              <div class="card">
+                <div class="image">
+                  <img src="images/Tools-Images/tool-1-img.png" alt="" />
+                </div>
+                <div class="infos">
+                  <span class="name">Agent-based Model of Mobs</span>
+                  <span class="tooldesc"
+                    >This is a tool that uses Agent-based modeling to study the
+                    Mob phenomenon. It was created using NetLogo. To download
+                    the model, click
+                    <a href="downloads/ResearchModelV2-ANNSIM.nlogo">here</a
+                    >.</span
+                  >
+                </div>
+                <a
+                  href="https://www.computer.org/csdl/proceedings-article/annsim/2023/10155386/1Oidv6KtKEw"
+                  target="_blank"
+                  class="btn-contact"
+                  >details</a
+                >
               </div>
-              <div class="infos">
-                <span class="name">Agent-based Model of Mobs</span>
-                <span class="tooldesc">This is a tool that uses Agent-based modeling to study the Mob phenomenon. It was created using NetLogo. To download the model, click <a href="downloads/ResearchModelV2-ANNSIM.nlogo">here</a>.</span>
+            </label>
+
+            <label for="s2" id="slide2">
+              <div class="card" id="tall-card">
+                <div class="image">
+                  <img src="images/Tools-Images/tool-2-img.png" alt="" />
+                </div>
+                <div class="infos">
+                  <span class="name"
+                    >Simulating Mobs Using the Monte Carlo Methods</span
+                  >
+                  <span class="tooldesc"
+                    >This is a tool that use Randomness (or Monte Carlo methods)
+                    and the theory of Collective Action to study the Mob
+                    phenomenon. This simple tool uses the four possible
+                    scenarios a mobber could face to predict the success or
+                    failure of a Mob and to estimate the number of powerful
+                    actors (or organizers) needed to have a successful Mob.
+                    Download the code from
+                    <a
+                      href="https://github.com/SamerAl-khateeb/MobsSimulator-Python"
+                      target="_blank"
+                      >GitHub</a
+                    >.</span
+                  >
+                </div>
+                <a
+                  href="https://link.springer.com/chapter/10.1007/978-3-031-33728-4_1"
+                  target="_blank"
+                  class="btn-contact"
+                  >details</a
+                >
               </div>
-              <a href="https://www.computer.org/csdl/proceedings-article/annsim/2023/10155386/1Oidv6KtKEw" target="_blank" class="btn-contact">details</a>
-             
-            </div>
-          </label>
-    
-          <label for="s2" id="slide2">
-            <div class="card" id="tall-card">
-              <div class="image">
-                <img src="images/Tools-Images/tool-2-img.png" alt="">
+            </label>
+
+            <label for="s3" id="slide3">
+              <div class="card">
+                <div class="image">
+                  <img src="images/Tools-Images/tool-3-img.jpg" alt="" />
+                </div>
+                <div class="infos">
+                  <span class="name">Coming Soon!</span>
+                  <span class="tooldesc"
+                    >This will be a web-based tool that enables the user to ask
+                    questions about a mob and see results on the screen. The
+                    tool leverages the knowledge gained from this project to put
+                    together an intuitive and easy-to-use interface for less
+                    technically savvy users.</span
+                  >
+                </div>
+                <a href="/contact" target="_blank" class="btn-contact"
+                  >details</a
+                >
               </div>
-              <div class="infos">
-                <span class="name">Simulating Mobs Using the Monte Carlo Methods</span>
-                <span class="tooldesc">This is a tool that use Randomness (or Monte Carlo methods) and the theory of Collective Action to study the Mob phenomenon. This simple tool uses the four possible scenarios a mobber could face to predict the success or failure of a Mob and to estimate the number of powerful actors (or organizers) needed to have a successful Mob. Download the code from <a href="https://github.com/SamerAl-khateeb/MobsSimulator-Python" target="_blank">GitHub</a>.</span>
-              </div>
-              <a href="https://link.springer.com/chapter/10.1007/978-3-031-33728-4_1" target="_blank" class="btn-contact">details</a>
-             
-            </div>
-          </label>
-    
-          <label for="s3" id="slide3">
-            <div class="card">
-              <div class="image">
-                <img src="images/Tools-Images/tool-3-img.jpg" alt="">
-               
-              </div>
-              <div class="infos">
-                <span class="name">Coming Soon!</span>
-                <span class="tooldesc">This will be a web-based tool that enables the user to ask questions about a mob and see results on the screen. The tool leverages the knowledge gained from this project to put together an intuitive and easy-to-use interface for less technically savvy users.</span>
-              </div>
-              <a href="/contact" target="_blank" class="btn-contact">details</a>
-             
-            </div>
-          </label>
-    
+            </label>
+          </div>
         </div>
-    
+      </section>
+    </main>
+
+    <div class="footer">
+      <div class="left-logos">
+        <div class="top-logos">
+          <img
+            src="images/Footer-Logos/Creighton-Logo.png"
+            alt="Creighton Logo"
+            class="footer-logo"
+          />
+          <img
+            src="images/Footer-Logos/UALR-Logo.png"
+            alt="COSMOS Logo"
+            class="footer-logo"
+          />
+        </div>
+        <img
+          src="images/Footer-Logos/Cosmos-Logo.png"
+          alt="Cosmos Logo"
+          class="cosmos-logo"
+        />
       </div>
 
-    </section>
-
-  </main>
-
-  <div class="footer">
-
-    <div class="left-logos">
-      <div class="top-logos">
-        <img src="images/Footer-Logos/Creighton-Logo.png" alt="Creighton Logo" class="footer-logo">
-        <img src="images/Footer-Logos/UALR-Logo.png" alt="COSMOS Logo" class="footer-logo">
+      <div class="right-content">
+        <div class="right-logos">
+          <img
+            src="images/Footer-Logos/ONR-Logo.png"
+            alt="ONR Logo"
+            class="right-footer-logo"
+          />
+          <img
+            src="images/Footer-Logos/Air-Force-Research-Lab-Logo.png"
+            alt="Air Force Research Lab Logo"
+            class="right-footer-logo"
+          />
+        </div>
+        <p class="award-number">
+          <a
+            href="https://www.defense.gov/News/Releases/Release/Article/3030463/department-of-defense-announces-fiscal-year-2021-defense-established-program-to/"
+            target="_blank"
+            >Award# FA9550-22-1-0332</a
+          >
+        </p>
       </div>
-      <img src="images/Footer-Logos/Cosmos-Logo.png" alt="Cosmos Logo" class="cosmos-logo">
     </div>
-
-    <div class="right-content">
-      <div class="right-logos">
-        <img src="images/Footer-Logos/ONR-Logo.png" alt="ONR Logo" class="right-footer-logo">
-        <img src="images/Footer-Logos/Air-Force-Research-Lab-Logo.png" alt="Air Force Research Lab Logo"
-          class="right-footer-logo">
-      </div>
-      <p class="award-number"><a href="https://www.defense.gov/News/Releases/Release/Article/3030463/department-of-defense-announces-fiscal-year-2021-defense-established-program-to/" target="_blank">Award# FA9550-22-1-0332</a></p>
-    </div>
-  </div>
-
-</body>
-
+  </body>
 </html>
