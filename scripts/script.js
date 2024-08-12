@@ -2,42 +2,46 @@ let isTransitioning = false;
 let autoSlideInterval;
 
 function adjustNavbarDisplay() {
-  const navbar = document.querySelector('.navbar');
-  navbar.classList.toggle('is-hidden', window.innerWidth < 769);
+  const navbar = document.querySelector(".navbar");
+  navbar.classList.toggle("is-hidden", window.innerWidth < 769);
 }
 
 function adjustCarouselPadding() {
-  const header = document.querySelector('.header');
-  const carousel = document.querySelector('.carousel');
+  const header = document.querySelector(".header");
+  const carousel = document.querySelector(".carousel");
   carousel.style.paddingTop = `${header.offsetHeight}px`;
 }
 
 function adjustTwitterHeight() {
-  const leftSection = document.getElementById('leftsection');
-  const twitterSection = document.getElementById('twitter');
+  const leftSection = document.getElementById("leftsection");
+  const twitterSection = document.getElementById("twitter");
   twitterSection.style.height = `${leftSection.offsetHeight}px`;
 }
 
 function smoothScroll(anchor) {
-  const headerHeight = document.querySelector('.header').offsetHeight;
+  const headerHeight = document.querySelector(".header").offsetHeight;
   const additionalOffset = 0;
-  let targetID = anchor.getAttribute('href');
+  let targetID = anchor.getAttribute("href");
   let targetAnchor = document.querySelector(targetID);
 
   if (targetAnchor) {
-    let topOffset = window.pageYOffset + targetAnchor.getBoundingClientRect().top - headerHeight - additionalOffset;
-    window.scrollTo({ top: topOffset, behavior: 'smooth' });
+    let topOffset =
+      window.pageYOffset +
+      targetAnchor.getBoundingClientRect().top -
+      headerHeight -
+      additionalOffset;
+    window.scrollTo({ top: topOffset, behavior: "smooth" });
   }
 }
 
 function changeSlide(offset) {
-  const carousel = document.querySelector('[data-carousel]');
-  const slides = carousel.querySelector('[data-slides]');
+  const carousel = document.querySelector("[data-carousel]");
+  const slides = carousel.querySelector("[data-slides]");
 
   if (isTransitioning) return;
   isTransitioning = true;
 
-  const activeSlide = slides.querySelector('[data-active]');
+  const activeSlide = slides.querySelector("[data-active]");
   let newIndex = [...slides.children].indexOf(activeSlide) + offset;
 
   if (newIndex < 0) newIndex = slides.children.length - 1;
@@ -46,59 +50,59 @@ function changeSlide(offset) {
   slides.children[newIndex].dataset.active = true;
   delete activeSlide.dataset.active;
 
-  setTimeout(() => { isTransitioning = false; }, 500);
+  setTimeout(() => {
+    isTransitioning = false;
+  }, 500);
 }
 
 function startAutoSlide() {
   if (autoSlideInterval) clearInterval(autoSlideInterval);
-  autoSlideInterval = setInterval(() => { changeSlide(1); }, 9000);
+  autoSlideInterval = setInterval(() => {
+    changeSlide(1);
+  }, 9000);
 }
 
 // Tooltip toggle function for mobile devices
 function toggleTooltip(icon) {
-  let tooltip = icon.querySelector('.tooltip');
-  let isTooltipVisible = tooltip.style.visibility === 'visible';
+  let tooltip = icon.querySelector(".tooltip");
+  let isTooltipVisible = tooltip.style.visibility === "visible";
   // Hide all tooltips
-  document.querySelectorAll('.tooltip').forEach(tip => {
-    tip.style.visibility = 'hidden';
-    tip.style.opacity = '0';
+  document.querySelectorAll(".tooltip").forEach((tip) => {
+    tip.style.visibility = "hidden";
+    tip.style.opacity = "0";
   });
   // Show the pressed tooltip if it was not visible
   if (!isTooltipVisible) {
-    tooltip.style.visibility = 'visible';
-    tooltip.style.opacity = '1';
+    tooltip.style.visibility = "visible";
+    tooltip.style.opacity = "1";
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   adjustNavbarDisplay();
   adjustCarouselPadding();
-  adjustTwitterHeight(); 
+  adjustTwitterHeight();
 
-  document.getElementById('logo').addEventListener('click', (event) => {
-    if (window.location.pathname !== 'index.html') {
-      event.preventDefault();
-      window.location.href = 'index.html';
-    } else {  
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  document.getElementById("logo").addEventListener("click", (event) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
       e.preventDefault();
       smoothScroll(anchor);
     });
   });
 
-  document.querySelector('.dropdown-toggle').addEventListener('click', () => {
-    document.querySelector('.navbar').classList.toggle('is-hidden');
+  document.querySelector(".dropdown-toggle").addEventListener("click", () => {
+    document.querySelector(".navbar").classList.toggle("is-hidden");
   });
 
   startAutoSlide();
 
   const buttons = document.querySelectorAll("[data-carousel-button]");
-  buttons.forEach(button => {
+  buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const offset = button.dataset.carouselButton === "next" ? 1 : -1;
       changeSlide(offset);
@@ -106,12 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  document.addEventListener('keydown', function(event) {
+  document.addEventListener("keydown", function (event) {
     const key = event.key;
 
-    const s1 = document.getElementById('s1');
-    const s2 = document.getElementById('s2');
-    const s3 = document.getElementById('s3');
+    const s1 = document.getElementById("s1");
+    const s2 = document.getElementById("s2");
+    const s3 = document.getElementById("s3");
 
     if (key === "ArrowRight") {
       if (s1.checked) {
@@ -134,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.querySelector('.btn-contact').addEventListener('click', (event) => {
-      var inputId = card.parentNode.getAttribute('for');
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    card.querySelector(".btn-contact").addEventListener("click", (event) => {
+      var inputId = card.parentNode.getAttribute("for");
       var input = document.getElementById(inputId);
       if (!input.checked) {
         event.preventDefault();
@@ -146,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const handleSwipe = (function() {
+  const handleSwipe = (function () {
     let touchstartX = 0;
     let touchendX = 0;
 
@@ -156,42 +160,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     return {
-      onTouchStart: (event) => { touchstartX = event.changedTouches[0].screenX; },
-      onTouchEnd: (event) => { touchendX = event.changedTouches[0].screenX; checkSwipeDirection(); }
+      onTouchStart: (event) => {
+        touchstartX = event.changedTouches[0].screenX;
+      },
+      onTouchEnd: (event) => {
+        touchendX = event.changedTouches[0].screenX;
+        checkSwipeDirection();
+      },
     };
   })();
 
-  const carouselElement = document.querySelector('.carousel');
-  carouselElement.addEventListener('touchstart', handleSwipe.onTouchStart, false);
-  carouselElement.addEventListener('touchend', handleSwipe.onTouchEnd, false);
+  const carouselElement = document.querySelector(".carousel");
+  carouselElement.addEventListener(
+    "touchstart",
+    handleSwipe.onTouchStart,
+    false
+  );
+  carouselElement.addEventListener("touchend", handleSwipe.onTouchEnd, false);
 
   // Tooltip event listeners for mobile/touchscreen devices
-  document.querySelectorAll('.icon-container').forEach(icon => {
-    icon.addEventListener('click', (event) => {
+  document.querySelectorAll(".icon-container").forEach((icon) => {
+    icon.addEventListener("click", (event) => {
       event.stopPropagation(); // Prevent event from bubbling
       toggleTooltip(icon);
     });
   });
 
   // Hide tooltips when tapping anywhere else on the page
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.tooltip').forEach(tip => {
-      tip.style.visibility = 'hidden';
-      tip.style.opacity = '0';
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".tooltip").forEach((tip) => {
+      tip.style.visibility = "hidden";
+      tip.style.opacity = "0";
     });
   });
 });
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   adjustNavbarDisplay();
   adjustCarouselPadding();
   adjustTwitterHeight();
 });
 
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
   adjustNavbarDisplay();
   adjustCarouselPadding();
   adjustTwitterHeight();
 });
-
-
